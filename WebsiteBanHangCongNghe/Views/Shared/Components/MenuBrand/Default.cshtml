@@ -1,0 +1,9 @@
+﻿@model IEnumerable<WebsiteBanHangCongNghe.ViewModel.MenuBrandVM>
+
+@foreach(var item in Model)
+{
+	<ul class="nav nav-pills nav-stacked">
+		<li><a href="#"> <span class="pull-right">(@item.quantity)</span>@item.name</a></li>
+		
+	</ul>
+}
