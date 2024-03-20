@@ -254,3 +254,4 @@ D:\LTW_ASP.NET\DACS\WebsiteBanHangCongNghe\WebsiteBanHangCongNghe\bin\Debug\net8
 D:\LTW_ASP.NET\DACS\WebsiteBanHangCongNghe\WebsiteBanHangCongNghe\bin\Debug\net8.0\WebsiteBanHangCongNghe.pdb
 D:\LTW_ASP.NET\DACS\WebsiteBanHangCongNghe\WebsiteBanHangCongNghe\obj\Debug\net8.0\WebsiteBanHangCongNghe.genruntimeconfig.cache
 D:\LTW_ASP.NET\DACS\WebsiteBanHangCongNghe\WebsiteBanHangCongNghe\obj\Debug\net8.0\ref\WebsiteBanHangCongNghe.dll
+D:\LTW_ASP.NET\DACS\WebsiteBanHangCongNghe\WebsiteBanHangCongNghe\obj\Debug\net8.0\WebsiteBanHangCongNghe.sourcelink.json
