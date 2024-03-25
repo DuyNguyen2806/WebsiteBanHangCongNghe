@@ -1,0 +1,19 @@
+﻿@model IEnumerable<WebsiteBanHangCongNghe.ViewModel.MenuBrandVM>
+@foreach(var item in Model)
+{
+	<div class="col-sm-3">
+		<div class="video-gallery text-center">
+			<a href="#">
+				<div class="iframe-img">
+					<img src="~/imgs/Images/Brand/@item.img" alt="@item.name" />
+				</div>
+				<div class="overlay-icon">
+					<i class="fa fa-play-circle-o"></i>
+				</div>
+			</a>
+			<p>@item.name</p>
+
+		</div>
+	</div>
+}
+

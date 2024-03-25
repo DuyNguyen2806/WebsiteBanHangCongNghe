@@ -11,11 +11,13 @@ namespace WebsiteBanHangCongNghe.ViewComponents
 		public MenuBrandViewComponent(QlbhcongNgheContext context) => db = context;
 		public IViewComponentResult Invoke()
 		{
+			
 			var data = db.Brands.Select(c => new MenuBrandVM
 			{
 				id = c.Id,
 				name = c.Name,
 				quantity = c.Products.Count(),
+				
 			});
 			return View(data);
 		}

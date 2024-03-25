@@ -40,21 +40,15 @@
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
-						<h2>Category</h2>
-						<div class="panel-group category-products" id="accordian">
+					
 							<!--category-productsr-->
 							@await Component.InvokeAsync("MenuCategory")
-						</div><!--/category-products-->
-
-						<div class="brands_products">
-							<!--brands_products-->
-							<h2>Brands</h2>
-							<div class="brands-name">
-								@await Component.InvokeAsync("MenuBrand")
+						
+						
+							@await Component.InvokeAsync("MenuBrand")
 
 								
-							</div>
-						</div><!--/brands_products-->
+					
 
 						
 						
@@ -64,9 +58,10 @@
 
 				<div class="col-sm-9 padding-right">
 					@RenderBody()
+					
 					@await Component.InvokeAsync("ProductRecommend")
-
 				</div>
+				
 			</div>
 		</div>
 	</section>

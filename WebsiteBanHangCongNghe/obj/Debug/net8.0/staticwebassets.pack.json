@@ -317,6 +317,42 @@
       "PackagePath": "staticwebassets\\images\\shop\\product9.jpg"
     },
     {
+      "Id": "D:\\LTW_ASP.NET\\DACS\\WebsiteBanHangCongNghe\\WebsiteBanHangCongNghe\\wwwroot\\imgs\\Images\\Banner\\banner1.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Images\\Banner\\banner1.jpg"
+    },
+    {
+      "Id": "D:\\LTW_ASP.NET\\DACS\\WebsiteBanHangCongNghe\\WebsiteBanHangCongNghe\\wwwroot\\imgs\\Images\\Banner\\banner2.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Images\\Banner\\banner2.jpg"
+    },
+    {
+      "Id": "D:\\LTW_ASP.NET\\DACS\\WebsiteBanHangCongNghe\\WebsiteBanHangCongNghe\\wwwroot\\imgs\\Images\\Brand\\acer.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Images\\Brand\\acer.jpg"
+    },
+    {
+      "Id": "D:\\LTW_ASP.NET\\DACS\\WebsiteBanHangCongNghe\\WebsiteBanHangCongNghe\\wwwroot\\imgs\\Images\\Brand\\apple.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Images\\Brand\\apple.jpg"
+    },
+    {
+      "Id": "D:\\LTW_ASP.NET\\DACS\\WebsiteBanHangCongNghe\\WebsiteBanHangCongNghe\\wwwroot\\imgs\\Images\\Brand\\asus.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Images\\Brand\\asus.jpg"
+    },
+    {
+      "Id": "D:\\LTW_ASP.NET\\DACS\\WebsiteBanHangCongNghe\\WebsiteBanHangCongNghe\\wwwroot\\imgs\\Images\\Brand\\dell.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Images\\Brand\\dell.jpg"
+    },
+    {
+      "Id": "D:\\LTW_ASP.NET\\DACS\\WebsiteBanHangCongNghe\\WebsiteBanHangCongNghe\\wwwroot\\imgs\\Images\\Brand\\hp.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Images\\Brand\\hp.jpg"
+    },
+    {
+      "Id": "D:\\LTW_ASP.NET\\DACS\\WebsiteBanHangCongNghe\\WebsiteBanHangCongNghe\\wwwroot\\imgs\\Images\\Brand\\lg.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Images\\Brand\\lg.jpg"
+    },
+    {
+      "Id": "D:\\LTW_ASP.NET\\DACS\\WebsiteBanHangCongNghe\\WebsiteBanHangCongNghe\\wwwroot\\imgs\\Images\\Brand\\logitech.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Images\\Brand\\logitech.jpg"
+    },
+    {
       "Id": "D:\\LTW_ASP.NET\\DACS\\WebsiteBanHangCongNghe\\WebsiteBanHangCongNghe\\wwwroot\\imgs\\Images\\Product\\product1.jpg",
       "PackagePath": "staticwebassets\\imgs\\Images\\Product\\product1.jpg"
     },

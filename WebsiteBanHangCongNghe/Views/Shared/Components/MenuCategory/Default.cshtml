@@ -1,12 +1,14 @@
 ﻿@model IEnumerable<WebsiteBanHangCongNghe.ViewModel.MenuCategoryVM>
+<h2>Category</h2>
+<div class="panel-group category-products" id="accordian">
 @foreach(var item in Model)
 {
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h4 class="panel-title"><a href="#"><span class="pull-right">(@item.quantity)</span>@item.name</a> </h4>
+			<h4 class="panel-title"><a asp-action="Index" asp-controller="Product" asp-route-category_id="@item.Id"><span class="pull-right">(@item.quantity)</span>@item.name</a> </h4>
 
 		</div>
 	</div>
 }
 
-
+</div><!--/category-products-->

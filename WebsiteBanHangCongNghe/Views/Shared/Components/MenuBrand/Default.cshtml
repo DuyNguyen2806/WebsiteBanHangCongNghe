@@ -1,9 +1,14 @@
 ﻿@model IEnumerable<WebsiteBanHangCongNghe.ViewModel.MenuBrandVM>
-
+<div class="brands_products">
+	<!--brands_products-->
+	<h2>Brands</h2>
+	<div class="brands-name">
 @foreach(var item in Model)
 {
 	<ul class="nav nav-pills nav-stacked">
-		<li><a href="#"> <span class="pull-right">(@item.quantity)</span>@item.name</a></li>
+		<li><a a asp-action="Index" asp-controller="Product" asp-route-brand_id="@item.id"> <span class="pull-right">(@item.quantity)</span>@item.name</a></li>
 		
 	</ul>
 }
+	</div>
+</div><!--/brands_products-->

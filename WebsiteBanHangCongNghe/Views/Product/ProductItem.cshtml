@@ -1,0 +1,28 @@
+﻿@model IEnumerable<WebsiteBanHangCongNghe.ViewModel.ProductVM>
+@{
+    ViewData["Title"] = "ProductItem";
+ 
+}
+
+@foreach (var item in Model)
+{
+    <div class="col-sm-4">
+        <style>
+            .product-image-wrapper {
+                height: 450px;
+            }
+        </style>
+        <div class="product-image-wrapper">
+            <div class="single-products">
+                <div class="productinfo text-center">
+
+                    <a asp-action="Details" asp-controller="Product" asp-route-id="@item.Id">		<img src="~/imgs/Images/Product/@item.image" alt="@item.Name"></a>
+                    <h2>@item.price.ToString("N0") VNĐ</h2>
+                    <p><a asp-action="Details" asp-controller="Product" asp-route-id="@item.Id">@item.Name</a></p>
+                    <a asp-action="AddToCart" asp-controller="Cart" asp-route-id = "@item.Id" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

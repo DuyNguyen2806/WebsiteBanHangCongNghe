@@ -3,28 +3,15 @@
 @{
     Layout = "_MainLayout";
 }
+
 <div class="features_items">
+  
     <!--features_items-->
     <h2 class="title text-center">Features Items</h2>
-    @foreach (var item in Model)
-    {
-        <div class="col-sm-4">
-            <div class="product-image-wrapper">
-                <div class="single-products">
-                    <div class="productinfo text-center">
-
-                        <a asp-action="Details" asp-controller="Product" asp-route-id="@item.Id">		<img src="~/imgs/Images/Product/@item.image" alt="@item.Name"></a>
-                        <h2>@item.price.ToString("N0") VNĐ</h2>
-                        <p><a asp-action="Details" asp-controller="Product" asp-route-id="@item.Id">@item.Name</a></p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    }
+    @await Html.PartialAsync("ProductItem", Model);
 </div>
 <ul class="pagination">
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, category_id = ViewBag.Cid, brand_id = ViewBag.brand_id }))
 </ul>
 
 

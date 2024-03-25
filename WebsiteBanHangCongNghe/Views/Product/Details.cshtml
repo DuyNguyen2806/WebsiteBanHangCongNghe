@@ -17,17 +17,22 @@
 		</div>
 		<div class="col-sm-7">
 			<div class="product-information">
+			
+
 				<!--/product-information-->
 				<img src="images/product-details/new.jpg" class="newarrival" alt="">
 				<h2>@Model.Name</h2>
 				<p>Rating: @Model.Rating <i class="bi bi-star-fill"></i></p>
+				<form asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.Id">
 				<span>
 					<span>@Model.price.ToString("N0") VNĐ</span>
-					
-					<button type="button" class="btn btn-fefault cart">
+					<label>Quantity:</label>
+					<input type="text" value="1" name="Quantity">
+					<button  class="btn btn-fefault cart">
 						<i class="fa fa-shopping-cart"></i>
 						Add to cart
 					</button>
+					</form>
 				</span>
 				<p><b>Availability:</b>@Model.InstockName</p>
 				<p><b>Category:</b> @Model.CategoryName</p>

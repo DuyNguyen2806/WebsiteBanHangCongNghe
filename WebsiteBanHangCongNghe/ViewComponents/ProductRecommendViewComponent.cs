@@ -11,13 +11,18 @@ namespace WebsiteBanHangCongNghe.ViewComponents
 		public ProductRecommendViewComponent(QlbhcongNgheContext context) => db = context;
 		public IViewComponentResult Invoke()
 		{
+			if (ViewData["Hide"] != null && (bool)ViewData["Hide"])
+			{
+				return Content(""); // Trả về một ContentComponentResult trống
+			}
 			var data = db.Products.Select(p => new ProductVM
 			{
 				Id = p.Id,
 				Name = p.Name,
-				image= p.Imgs,
+				image = p.Imgs,
 				price = p.Price,
-			});
+				
+			}) ;
 			var latestProducts = data.OrderByDescending(p => p.Id).Take(3).ToList();
 
 			return View(latestProducts);

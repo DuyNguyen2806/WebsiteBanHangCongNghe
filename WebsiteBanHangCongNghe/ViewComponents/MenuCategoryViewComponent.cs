@@ -11,6 +11,7 @@ namespace WebsiteBanHangCongNghe.ViewComponents
 		public MenuCategoryViewComponent(QlbhcongNgheContext context) => db = context;
 		public IViewComponentResult Invoke()
 		{
+			
 			var data = db.Categories.Select(c => new MenuCategoryVM
 			{
 				Id = c.Id,
