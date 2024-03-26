@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebsiteBanHangCongNghe.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using WebsiteBanHangCongNghe.Helper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +10,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<QlbhcongNgheContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("WebsiteBanHang"))
 ) ;
-builder.Services.AddDistributedMemoryCache();
 
+
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddAutoMapper(typeof(AutoMapperUser));
 builder.Services.AddSession(options =>
 {
 	options.IdleTimeout = TimeSpan.FromMinutes(10);

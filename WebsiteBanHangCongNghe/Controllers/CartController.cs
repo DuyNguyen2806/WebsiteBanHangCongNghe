@@ -48,5 +48,16 @@ namespace WebsiteBanHangCongNghe.Controllers
 
 
 		}
+		public IActionResult RemoveCart(int id) {
+			var newCart = Cart;
+			var item = newCart.SingleOrDefault(p => p.ProductId == id);
+			if(item != null) {
+				newCart.Remove(item);
+				HttpContext.Session.Set(MySetting.CART_KEY , newCart);
+			
+			}
+			return RedirectToAction("Index");
+
+		}
 	}
 }

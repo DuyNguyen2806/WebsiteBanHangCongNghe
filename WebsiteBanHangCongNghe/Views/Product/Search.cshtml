@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<WebsiteBanHangCongNghe.ViewModel.ProductVM>
 
 @{
-    ViewData["Title"] = "Search";
+    ViewData["Hide"] = true;
 
     
 }
-@await Html.PartialAsync("ProductItem", Model);
+@await Html.PartialAsync("ProductItem", Model)
 

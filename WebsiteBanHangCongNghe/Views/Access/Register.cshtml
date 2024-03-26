@@ -1,0 +1,63 @@
+﻿@model WebsiteBanHangCongNghe.ViewModel.UserRegister
+@{
+    ViewData["Hide"] = true;
+    Layout = "_MainLayout";
+}
+
+<div class="signup-form w-auto">
+	<style>
+		button.btn.border-secondary.py-3.px-4.text-uppercase.w-100.text-primary {
+			margin-left: 14px;
+
+		}
+
+		.signup-form {
+			width: inherit;
+		}
+
+		.form-check {
+			width: fit-content;
+			display: flex;
+		}</style>
+	<!--sign up form-->
+	<h2>Register</h2>
+	<form asp-action="Register" asp-controller="Access">
+		<div class="form-item w-100">
+			<label asp-for="@Model.Username" class="form-label my-3"></label><sup>*</sup>
+			<input asp-for="@Model.Username" class="form-control">
+			<span asp-validation-for="@Model.Username" class="text-danger"></span>
+		</div>
+		<div class="form-item w-100">
+			<label asp-for="@Model.Password" class="form-label my-3"></label><sup>*</sup>
+			<input asp-for="@Model.Password" class="form-control">
+			<span asp-validation-for="@Model.Password" class="text-danger"></span>
+		</div>	<div class="form-item w-100">
+			<label asp-for="@Model.Name" class="form-label my-3"></label><sup>*</sup>
+			<input asp-for="@Model.Name" class="form-control">
+			<span asp-validation-for="@Model.Name" class="text-danger"></span>
+		</div>	<div class="form-item w-100">
+			<label asp-for="@Model.Address" class="form-label my-3"></label>
+			<input asp-for="@Model.Address" class="form-control">
+			<span asp-validation-for="@Model.Address" class="text-danger"></span>
+		</div>
+		<div class="form-item w-100">
+			<label asp-for="@Model.Phone" class="form-label my-3"></label>
+			<input asp-for="@Model.Phone" class="form-control">
+			<span asp-validation-for="@Model.Phone" class="text-danger"></span>
+		</div>
+		<div class="form-item w-100">
+			<label asp-for="@Model.Email" class="form-label my-3"></label><sup>*</sup>
+			<input asp-for="@Model.Email" class="form-control">
+			<span asp-validation-for="@Model.Email" class="text-danger"></span>
+		</div>
+		<div class="form-check">
+			<label class="form-check-label" for="Gender">Nam?</label>
+			<input asp-for="@Model.Gender" class="form-check-input">
+			
+		</div>
+		<div class="row g-4 text-center align-items-center justify-content-center pt-4 m">
+			<button type="submit" class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Register</button>
+		</div>
+	</form>
+</div>
+
