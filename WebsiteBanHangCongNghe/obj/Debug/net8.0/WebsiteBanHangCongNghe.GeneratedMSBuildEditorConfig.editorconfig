@@ -26,6 +26,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\LTW_ASP.NET\DACS\WebsiteBanHangCongNghe\WebsiteBanHangCongNghe
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/LTW_ASP.NET/DACS/WebsiteBanHangCongNghe/WebsiteBanHangCongNghe/Views/Access/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/LTW_ASP.NET/DACS/WebsiteBanHangCongNghe/WebsiteBanHangCongNghe/Views/Access/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzXFByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/LTW_ASP.NET/DACS/WebsiteBanHangCongNghe/WebsiteBanHangCongNghe/Views/Access/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNzXFJlZ2lzdGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -56,6 +64,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/LTW_ASP.NET/DACS/WebsiteBanHangCongNghe/WebsiteBanHangCongNghe/Views/Product/Search.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxTZWFyY2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/LTW_ASP.NET/DACS/WebsiteBanHangCongNghe/WebsiteBanHangCongNghe/Views/Shared/Components/Cart/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ2FydFxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/LTW_ASP.NET/DACS/WebsiteBanHangCongNghe/WebsiteBanHangCongNghe/Views/Shared/Components/MenuBrand/Default.cshtml]

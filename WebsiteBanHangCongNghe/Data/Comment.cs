@@ -9,7 +9,7 @@ public partial class Comment
 
     public int ProductId { get; set; }
 
-    public int UserId { get; set; }
+    public string Username { get; set; } = null!;
 
     public string CommentText { get; set; } = null!;
 

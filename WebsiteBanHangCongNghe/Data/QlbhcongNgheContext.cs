@@ -148,7 +148,9 @@ public partial class QlbhcongNgheContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("createAt");
             entity.Property(e => e.ProductId).HasColumnName("product_id");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
+            entity.Property(e => e.Username)
+                .HasMaxLength(50)
+                .HasColumnName("username");
 
             entity.HasOne(d => d.Product).WithMany(p => p.Comments)
                 .HasForeignKey(d => d.ProductId)

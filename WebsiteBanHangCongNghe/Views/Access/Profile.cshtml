@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewData["Title"] = "Profile";
+}
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h1>Profile @User.Identity.Name</h1>
+}
+

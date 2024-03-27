@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using WebsiteBanHangCongNghe.Data;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using WebsiteBanHangCongNghe.Helper;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,12 @@ builder.Services.AddSession(options =>
 	options.Cookie.HttpOnly = true;
 	options.Cookie.IsEssential = true;
 });
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+		.AddCookie(options =>
+		{
+			options.LoginPath = "/Access/Login"; // ???ng d?n ??n trang ??ng nh?p
+			options.AccessDeniedPath = "/Access/AccessDenied"; // ???ng d?n trang truy c?p b? t? ch?i
+		});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -36,6 +43,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseSession();
 
+app.UseAuthentication(); 
 app.UseAuthorization();
 
 app.MapControllerRoute(

@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebsiteBanHangCongNghe.Data;
@@ -18,6 +19,7 @@ namespace WebsiteBanHangCongNghe.Controllers
 		{
 			return View(Cart);
 		}
+		[Authorize]
 		public IActionResult AddToCart(int id, int Quantity = 1)
 		{
 			var newCart = Cart;

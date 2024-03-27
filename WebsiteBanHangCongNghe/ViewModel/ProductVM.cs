@@ -1,4 +1,6 @@
-﻿	namespace WebsiteBanHangCongNghe.ViewModel
+﻿using WebsiteBanHangCongNghe.Data;
+
+namespace WebsiteBanHangCongNghe.ViewModel
 {
 	public class ProductVM
 	{
@@ -21,6 +23,8 @@
 		public string BrandName { get; set; }
 		public int? Rating { get; set; }
 		public string InstockName { get; set; }
+		public List<Comment> Comments { get; set; } // Danh sách các comment
+		public Comment NewComment { get; set; } // Đối tượng để thêm comment mới
 
 	}
 

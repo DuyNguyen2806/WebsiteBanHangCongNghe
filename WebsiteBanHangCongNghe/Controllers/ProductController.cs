@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Xml.Linq;
 using WebsiteBanHangCongNghe.Data;
 using WebsiteBanHangCongNghe.ViewModel;
 using X.PagedList;
@@ -50,6 +52,7 @@ namespace WebsiteBanHangCongNghe.Controllers
 			{
 				return NotFound();
 			}
+			var comments = db.Comments.Where(c => c.ProductId == id).ToList();
 			var result = new ProductDetailVM
 			{
 				Id = product.Id,
@@ -61,12 +64,15 @@ namespace WebsiteBanHangCongNghe.Controllers
 				CategoryName = product.Category.Name,
 				BrandName = product.Brand.Name,
 				InstockName = product.Instock.Name,
+				
 			};
 
 			return View(result);
 
 		}
-        public IActionResult Search(string? search)
+		
+
+		public IActionResult Search(string? search)
         {
             ViewBag.Search = search;
             var lstProduct = db.Products.AsQueryable();
