@@ -197,9 +197,6 @@ public partial class QlbhcongNgheContext : DbContext
                 .HasColumnName("dateorder");
             entity.Property(e => e.DeliveryId).HasColumnName("delivery_id");
             entity.Property(e => e.Fee).HasColumnName("fee");
-            entity.Property(e => e.Name)
-                .HasMaxLength(50)
-                .HasColumnName("name");
             entity.Property(e => e.Note)
                 .HasMaxLength(50)
                 .HasColumnName("note");
@@ -209,6 +206,9 @@ public partial class QlbhcongNgheContext : DbContext
                 .HasColumnName("phone");
             entity.Property(e => e.StatusId).HasColumnName("status_id");
             entity.Property(e => e.UserId).HasColumnName("user_id");
+            entity.Property(e => e.Username)
+                .HasMaxLength(50)
+                .HasColumnName("username");
 
             entity.HasOne(d => d.Admin).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.AdminId)

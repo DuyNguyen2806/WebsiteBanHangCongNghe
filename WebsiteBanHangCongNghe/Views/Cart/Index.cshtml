@@ -28,6 +28,13 @@
 			color: #FE980F;
 			font-size: 19px;
 		}
+
+		.btn.btn-primary {
+			background: #FE980F;
+			border: 0 none;
+			border-radius: 0;
+			margin-top: 0px;
+		}
 	</style>
 	<div class="container">
 		<div class="breadcrumbs">
@@ -41,7 +48,6 @@
 				<thead>
 					<tr class="cart_menu">
 						<td class="image">Name</td>
-
 						<td class="price">Price</td>
 						<td class="quantity">Quantity</td>
 						<td class="total">Total</td>
@@ -62,9 +68,9 @@
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
-								
+									<a class="btn btn-primary" asp-action="Increase" asp-controller="Cart" asp-route-id="@item.ProductId"> + </a>
 									<input class="cart_quantity_input" type="text" name="Quantity" value="@item.Quantity" autocomplete="off" size="2">
-									
+									<a class="btn btn-primary" asp-action="Decrease" asp-controller="Cart" asp-route-id="@item.ProductId" > - </a>
 								</div>
 							</td>
 							<td class="cart_total">
@@ -84,6 +90,12 @@
 	</div>
 
 </section>
+<div>
+	@if (TempData["SuccessMessage"] != null)
+	{
+		<span class="text-success">@TempData["SuccessMessage"]</span>
+	}
+</div>
 <section id="do_action">
 	<div class="container">
 		<div class="heading">
@@ -97,8 +109,7 @@
 						<li>Shipping Cost <span>Free</span></li>
 						<li>Total <span>@Model.Sum(p => p.Total).ToString("N0") VNĐ</span></li>
 					</ul>
-					<a class="btn btn-default update" href="">Update</a>
-					<a class="btn btn-default check_out" href="">Check Out</a>
+					<a class="btn btn-default check_out" asp-action="CheckOut" asp-controller="Cart">Check Out</a>
 				</div>
 			</div>
 		</div>

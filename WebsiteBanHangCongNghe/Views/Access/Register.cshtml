@@ -21,6 +21,13 @@
 		}</style>
 	<!--sign up form-->
 	<h2>Register</h2>
+	<div>
+		@if (TempData["SuccessMessage"] != null)
+		{
+			<span class="text-success">@TempData["SuccessMessage"]</span>
+		}
+	</div>
+
 	<form asp-action="Register" asp-controller="Access">
 		<div class="form-item w-100">
 			<label asp-for="@Model.Username" class="form-label my-3"></label><sup>*</sup>

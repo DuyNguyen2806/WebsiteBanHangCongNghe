@@ -36,7 +36,6 @@ namespace WebsiteBanHangCongNghe.Controllers
 				image = p.Imgs,
 				description = p.Description,
 			});
-
 			PagedList<ProductVM> list = new PagedList<ProductVM>(result, pageNumber, pageSize);
 			ViewBag.Cid = category_id;
 			ViewBag.brand_id = brand_id;

@@ -26,6 +26,12 @@
 </head><!--/head-->
 
 <body>
+	<style>
+		.text-success {
+			color: #3c763d;
+			margin: 174px;
+		}
+	</style>
 
 	<header id="header">
 		@await Html.PartialAsync("_PartialHeader")
@@ -33,7 +39,12 @@
 
 	</header><!--/header-->
 	@await Html.PartialAsync("_PartialBanner")
-
+	<div>
+		@if (TempData["SuccessMessage"] != null)
+		{
+			<span class="text-success">@TempData["SuccessMessage"]</span>
+		}
+	</div>
 
 	<section>
 		<div class="container">
@@ -47,6 +58,7 @@
 						
 							@await Component.InvokeAsync("MenuBrand")
 
+				
 								
 					
 

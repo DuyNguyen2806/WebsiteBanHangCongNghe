@@ -15,7 +15,7 @@ public partial class Order
 
     public DateTime? Datedelivery { get; set; }
 
-    public string? Name { get; set; }
+    public string Username { get; set; } = null!;
 
     public string? Address { get; set; }
 

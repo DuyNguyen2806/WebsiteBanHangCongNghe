@@ -42,6 +42,7 @@ namespace WebsiteBanHangCongNghe.Controllers
 					user.RoleId = 2;
 					db.Users.Add(user);
 					db.SaveChanges();
+					TempData["SuccessMessage"] = "Registration successful!";
 					return RedirectToAction("Index", "Product");
 				}
 				catch (Exception)
@@ -84,8 +85,12 @@ namespace WebsiteBanHangCongNghe.Controllers
 				{
 					new Claim(ClaimTypes.Email, user.Email),
 					new Claim(ClaimTypes.Name, user.Name),
-					
-                };
+					new Claim(MySetting.CLAIM_Username, user.Username),
+				
+
+
+
+				};
 						var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 						var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 						await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
