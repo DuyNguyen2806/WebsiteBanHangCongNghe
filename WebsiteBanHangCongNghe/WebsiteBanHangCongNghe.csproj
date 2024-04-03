@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\LayoutAdmin\.DS_Store" />
   </ItemGroup>
 
 </Project>

@@ -16,5 +16,21 @@ namespace WebsiteBanHangCongNghe.Helper
 
 			return sb.ToString();
 		}
-	}
+        public static string SaveImage(IFormFile imgage, string folder)
+        {
+            try
+            {
+                var fullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "imgs","Images", folder, imgage.FileName);
+                using (var myfile = new FileStream(fullPath, FileMode.CreateNew))
+                {
+                    imgage.CopyTo(myfile);
+                }
+                return imgage.FileName;
+            }
+            catch (Exception ex)
+            {
+                return string.Empty;
+            }
+        }
+    }
 }
