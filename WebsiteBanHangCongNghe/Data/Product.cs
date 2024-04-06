@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace WebsiteBanHangCongNghe.Data;
 
 public partial class Product
 {
     public int Id { get; set; }
-    [Required]
+
     public string Name { get; set; } = null!;
 
     public string ShortDescription { get; set; } = null!;
@@ -18,7 +17,7 @@ public partial class Product
 
     public double Price { get; set; }
 
-    public string Imgs { get; set; } = null!;
+    public string? Imgs { get; set; }
 
     public int CategoryId { get; set; }
 

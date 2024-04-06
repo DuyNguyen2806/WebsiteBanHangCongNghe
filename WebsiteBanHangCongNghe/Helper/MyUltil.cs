@@ -32,5 +32,20 @@ namespace WebsiteBanHangCongNghe.Helper
                 return string.Empty;
             }
         }
+        public static void DeleteImage(string imagePath)
+        {
+            try
+            {
+                if (File.Exists(imagePath))
+                {
+                    File.Delete(imagePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ nếu cần
+                throw ex;
+            }
+        }
     }
 }
