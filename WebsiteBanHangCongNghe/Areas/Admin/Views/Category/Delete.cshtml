@@ -1,0 +1,16 @@
+﻿@model WebsiteBanHangCongNghe.Data.Category
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xác nhận xóa sản phẩm</h2>
+
+<p>Bạn có chắc chắn muốn xóa sản phẩm "@Model.Name" không?</p>
+
+<form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+    <button type="submit">Xóa</button>
+    <a asp-action="Index">Hủy bỏ</a>
+</form>
+

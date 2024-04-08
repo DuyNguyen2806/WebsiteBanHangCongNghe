@@ -1,0 +1,56 @@
+﻿@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<WebsiteBanHangCongNghe.Data.Brand>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Danh mục thương hiệu</h1>
+<p>Tổng số lượng thương hiệu: @ViewBag.totalCategory</p>
+
+<p>
+    <a class="btn btn-success btn-sm" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr class="table-warning">
+            <th>
+               Name
+            </th>
+           
+            <th style="width: 50%;">
+                ShortDescription
+            </th>
+            <th>
+                Image
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr class="table-success">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+                <td style="word-wrap: break-word; white-space: normal;">
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                <img src="~/imgs/Images/Brand/@item.Imgs" width="300px" />
+
+            </td>
+            <td>
+                    <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }), new X.PagedList.Web.Common.PagedListRenderOptions()
+{
+    LiElementClasses = new List<String> { "page-item" },
+    PageClasses = new List<String> { "page-link" }
+})

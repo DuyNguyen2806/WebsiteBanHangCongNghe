@@ -16,7 +16,7 @@ namespace WebsiteBanHangCongNghe.ViewComponents
 			{
 				id = c.Id,
 				name = c.Name,
-				quantity = c.Products.Count(),
+				quantity = c.Products.Count(p=>p.InstockId != 2),
 				
 			});
 			return View(data);

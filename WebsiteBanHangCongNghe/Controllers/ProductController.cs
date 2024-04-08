@@ -25,6 +25,8 @@ namespace WebsiteBanHangCongNghe.Controllers
             {
                 lstProduct = lstProduct.Where(p => p.Brand.Id == brand_id.Value);
             }
+            // Ẩn các sản phẩm có instock là 2 (hết hàng)
+            lstProduct = lstProduct.Where(p => p.InstockId != 2);
 
             int pageSize = 6;
 			int pageNumber = page == null || page < 0 ? 1 : page.Value;
@@ -35,7 +37,7 @@ namespace WebsiteBanHangCongNghe.Controllers
 				price = p.Price,
 				image = p.Imgs,
 				description = p.Description,
-			});
+			}).OrderByDescending(p => p.Id); 
 			PagedList<ProductVM> list = new PagedList<ProductVM>(result, pageNumber, pageSize);
 			ViewBag.Cid = category_id;
 			ViewBag.brand_id = brand_id;
@@ -79,6 +81,7 @@ namespace WebsiteBanHangCongNghe.Controllers
             {
                 lstProduct = lstProduct.Where(p => p.Name.Contains(search));
             }
+            lstProduct = lstProduct.Where(p => p.InstockId != 2);
             var result = lstProduct.Select(p => new ProductVM
             {
                 Id = p.Id,

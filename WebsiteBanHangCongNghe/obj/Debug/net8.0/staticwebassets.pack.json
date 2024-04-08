@@ -965,8 +965,20 @@
       "PackagePath": "staticwebassets\\imgs\\Images\\Brand\\logitech.jpg"
     },
     {
+      "Id": "D:\\LTW_ASP.NET\\DACS\\WebsiteBanHangCongNghe\\WebsiteBanHangCongNghe\\wwwroot\\imgs\\Images\\Product\\acer.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Images\\Product\\acer.jpg"
+    },
+    {
       "Id": "D:\\LTW_ASP.NET\\DACS\\WebsiteBanHangCongNghe\\WebsiteBanHangCongNghe\\wwwroot\\imgs\\Images\\Product\\asus.jpg",
       "PackagePath": "staticwebassets\\imgs\\Images\\Product\\asus.jpg"
+    },
+    {
+      "Id": "D:\\LTW_ASP.NET\\DACS\\WebsiteBanHangCongNghe\\WebsiteBanHangCongNghe\\wwwroot\\imgs\\Images\\Product\\dell.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Images\\Product\\dell.jpg"
+    },
+    {
+      "Id": "D:\\LTW_ASP.NET\\DACS\\WebsiteBanHangCongNghe\\WebsiteBanHangCongNghe\\wwwroot\\imgs\\Images\\Product\\hp.jpg",
+      "PackagePath": "staticwebassets\\imgs\\Images\\Product\\hp.jpg"
     },
     {
       "Id": "D:\\LTW_ASP.NET\\DACS\\WebsiteBanHangCongNghe\\WebsiteBanHangCongNghe\\wwwroot\\imgs\\Images\\Product\\product1.jpg",

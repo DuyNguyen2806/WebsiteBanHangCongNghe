@@ -18,13 +18,18 @@ namespace WebsiteBanHangCongNghe.Areas.Admin.Controllers
 
 
 
-        public IActionResult Index(int? categoryId, int? brandId, int? page)
+        public IActionResult Index(int? categoryId, int? brandId, string search, int? page)
         {
             IQueryable<Product> query = db.Products
-                                           .Include(p => p.Category)
-                                           .Include(p => p.Brand)
-                                           .Include(p => p.Instock)
-                                           .OrderByDescending(p => p.Id);
+                                            .Include(p => p.Category)
+                                            .Include(p => p.Brand)
+                                            .Include(p => p.Instock)
+                                            .OrderByDescending(p => p.Id);
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(p => p.Name.Contains(search));
+            }
 
             if (categoryId.HasValue)
             {
@@ -35,9 +40,10 @@ namespace WebsiteBanHangCongNghe.Areas.Admin.Controllers
             {
                 query = query.Where(p => p.BrandId == brandId.Value);
             }
+
             int totalProducts = query.Count();
             ViewBag.TotalProducts = totalProducts;
-
+            ViewBag.Search = search;
 
             int pageSize = 6;
             int pageNumber = page ?? 1;
@@ -48,6 +54,7 @@ namespace WebsiteBanHangCongNghe.Areas.Admin.Controllers
 
             return View(list);
         }
+
 
 
         public IActionResult Create()
