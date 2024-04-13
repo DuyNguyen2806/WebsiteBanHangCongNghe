@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Net.WebSockets;
 using System.Security.Claims;
 using WebsiteBanHangCongNghe.Data;
@@ -161,6 +162,33 @@ namespace WebsiteBanHangCongNghe.Controllers
 				return RedirectToAction("Index");
 			}
 		}
+        public IActionResult Orders()
+        {
+            var userName = User.FindFirstValue(MySetting.CLAIM_Username);
 
-	}
+            if (userName == null)
+            {
+                return RedirectToAction("Login", "Access");
+            }
+            else
+            {
+                var user = db.Users.FirstOrDefault(u => u.Username == userName);
+
+                if (user == null)
+                {
+                    // Handle case where user is not found
+                    return RedirectToAction("Login", "Access");
+                }
+
+                var orders = db.Orders.Include(o => o.OrderDetails)
+                .ThenInclude(od => od.Product)
+                    .Where(o => o.UserId == user.Id && o.OrderDetails.Any(od => od.Quantity > 0))
+                    .OrderByDescending(o => o.Dateorder)
+                    .ToList();
+
+                return View(orders);
+            }
+        }
+
+    }
 }

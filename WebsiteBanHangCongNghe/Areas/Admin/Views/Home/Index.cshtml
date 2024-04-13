@@ -3,6 +3,8 @@
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<h1>Trang chủ</h1>
+@if (User.Identity.IsAuthenticated)
+{
+    <h1>Profile @User.Identity.Name</h1>
+}
 

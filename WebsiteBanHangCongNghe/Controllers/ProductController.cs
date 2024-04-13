@@ -13,7 +13,7 @@ namespace WebsiteBanHangCongNghe.Controllers
 		private readonly QlbhcongNgheContext db;
 
 		public ProductController(QlbhcongNgheContext context) => db = context;
-		public IActionResult Index(int? page,int? category_id, int? brand_id)
+		public IActionResult Index(int? page,int? category_id, int? brand_id, double? minPrice, double? maxPrice)
 		{
 
 			var lstProduct = db.Products.AsQueryable();
@@ -27,8 +27,11 @@ namespace WebsiteBanHangCongNghe.Controllers
             }
             // Ẩn các sản phẩm có instock là 2 (hết hàng)
             lstProduct = lstProduct.Where(p => p.InstockId != 2);
-
-            int pageSize = 6;
+			if (minPrice.HasValue && maxPrice.HasValue)
+			{
+				lstProduct = lstProduct.Where(p => p.Price >= minPrice && p.Price <= maxPrice);
+			}
+			int pageSize = 6;
 			int pageNumber = page == null || page < 0 ? 1 : page.Value;
 			var result = lstProduct.Select(p => new ProductVM
 			{

@@ -1,0 +1,49 @@
+﻿@model WebsiteBanHangCongNghe.Data.Order
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<h2>Order Information</h2>
+<div class="card mb-3">
+    <div class="card-body">
+        <p><strong>Date Ordered:</strong> @Model.Dateorder</p>
+        <p><strong>Customer Name:</strong> @Model.User.Name</p>
+        <p><strong>Delivery Method:</strong> @Model.Delivery.Name</p>
+        <p><strong>Payment Method:</strong> @Model.Pay.Name</p>
+        <p><strong>Status:</strong> @Model.Status.Name</p>
+    </div>
+</div>
+
+<h2>Order Items</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Discount</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var orderDetail in Model.OrderDetails)
+            {
+                var totalPrice = orderDetail.Price * orderDetail.Quantity - (orderDetail.Discount ?? 0); // Tính tổng tiền
+                <tr>
+                    <td>@orderDetail.Product.Name</td>
+                    <td>@orderDetail.Price.ToString("N0") VNĐ</td>
+                    <td>@orderDetail.Quantity</td>
+                    <td>@orderDetail.Discount</td>
+                    <td>@totalPrice.ToString("N0") VNĐ</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<a class="btn btn-primary" asp-action="Index">Back to List</a>

@@ -57,6 +57,44 @@
 						
 						
 							@await Component.InvokeAsync("MenuBrand")
+						<div class="price-range">
+							<!--price-range-->
+							<h2>Price Range</h2>
+							<!-- Select box cho giá tối thiểu -->
+							<div class="form-group">
+								<label for="min-price-select">Giá từ:</label>
+								<select class="form-control" id="min-price-select" style="width: 100%;">
+									<option value="0">0 VND</option>
+									<option value="100000">100,000 VND</option>
+									<option value="500000">500,000 VND</option>
+									<option value="1000000">1,000,000 VND</option>
+									<!-- Thêm các tùy chọn giá khác tùy theo nhu cầu -->
+								</select>
+							</div>
+
+							<!-- Select box cho giá tối đa -->
+							<div class="form-group">
+								<label for="max-price-select">Đến:</label>
+								<select class="form-control" id="max-price-select" style="width: 100%;">
+									<option value="10000000">10,000,000 VND</option>
+									<option value="20000000">20,000,000 VND</option>
+									<option value="30000000">30,000,000 VND</option>
+									<option value="40000000">40,000,000 VND</option>
+									<option value="100000000">100,000,000 VND</option>
+
+								
+									<!-- Thêm các tùy chọn giá khác tùy theo nhu cầu -->
+								</select>
+							</div>
+
+							<!-- Nút tìm kiếm -->
+							<button class="btn btn-primary" id="filter-button" style="width: 100%;">Filter</button>
+
+							@* <div class="well">
+								<div class="slider slider-horizontal" style="width: 178px;"><div class="slider-track"><div class="slider-selection" style="left: 41.6667%; width: 33.3333%;"></div><div class="slider-handle round left-round" style="left: 41.6667%;"></div><div class="slider-handle round" style="left: 75%;"></div></div><div class="tooltip top" style="top: -30px; left: 70.8333px;"><div class="tooltip-arrow"></div><div class="tooltip-inner">250 : 450</div></div><input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" style=""></div><br>
+								<b>$ 0</b> <b class="pull-right">$ 600</b>
+							</div> *@
+						</div>
 
 				
 								
@@ -93,3 +131,14 @@
 
 </body>
 </html>
+<script>
+	$(function () {
+		$("#filter-button").click(function () {
+			var minPrice = $("#min-price-select").val();
+			var maxPrice = $("#max-price-select").val();
+
+			// Chuyển hướng đến action Index với các tham số lọc
+			window.location.href = "/Product/Index?page=1&minPrice=" + minPrice + "&maxPrice=" + maxPrice;
+		});
+	});
+</script>

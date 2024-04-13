@@ -60,55 +60,69 @@ namespace WebsiteBanHangCongNghe.Controllers
 			ViewBag.returnUrl = returnUrl;
 			return View();
 		}
-		[HttpPost]
-		public async Task<IActionResult> Login(LoginVM model, string? returnUrl)
-		{
-			ViewBag.returnUrl = returnUrl;
-			if (model != null)
-			{
-				var user = db.Users.SingleOrDefault(u => u.Username == model.Username);
-				if (user == null)
-				{
-					ModelState.AddModelError("loi", "The username does not exist");
-					ViewBag.Error = "Incorrect username or password.";
-				}
-				else
-				{
-					if (user.Password != model.Password.ToMd5Hash(user.RandomKey))
-					{
-						ModelState.AddModelError("loi", "Wrong password");
-						ViewBag.Error = "Incorrect username or password.";
-					}
-					else
-					{
-						var claims = new List<Claim>
-				{
-					new Claim(ClaimTypes.Email, user.Email),
-					new Claim(ClaimTypes.Name, user.Name),
-					new Claim(MySetting.CLAIM_Username, user.Username),
-				
-
-
-
-				};
-						var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-						var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-						await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
-						if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-						{
-							return Redirect(returnUrl);
-						}
-						else
-						{
-							return Redirect("/");
-						}
-					}
-				}
-			}
-			return View(model);
-		}
-
-		[Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginVM model, string? returnUrl)
+        {
+            ViewBag.returnUrl = returnUrl;
+            if (model != null)
+            {
+                var user = db.Users.SingleOrDefault(u => u.Username == model.Username);
+                if (user == null)
+                {
+                    ModelState.AddModelError("loi", "The username does not exist");
+                    ViewBag.Error = "Incorrect username or password.";
+                }
+                else
+                {
+                    if (user.Password != model.Password.ToMd5Hash(user.RandomKey))
+                    {
+                        ModelState.AddModelError("loi", "Wrong password");
+                        ViewBag.Error = "Incorrect username or password.";
+                    }
+                    else
+                    {
+                        var claims = new List<Claim>
+                        {
+                            new Claim(ClaimTypes.Email, user.Email),
+                            new Claim(ClaimTypes.Name, user.Name),
+                            new Claim(MySetting.CLAIM_Username, user.Username),
+                        };
+                        if (user.RoleId == 1)
+                        {
+                            claims.Add(new Claim(ClaimTypes.Role, "Admin"));
+                            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                            var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
+                            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                            {
+                                return Redirect(returnUrl);
+                            }
+                            else
+                            {
+                                return RedirectToAction("Index", "Home", new { area = "Admin" });
+                            }
+                        }
+                        else
+                        {
+                            // Đăng nhập cho người dùng không phải admin
+                            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                            var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
+                            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                            {
+                                return Redirect(returnUrl);
+                            }
+                            else
+                            {
+                                return Redirect("/");
+                            }
+                        }
+                    }
+                }
+            }
+            return View(model);
+        }
+        [Authorize]
 		public IActionResult Profile()
 		{
 			return View();
@@ -120,5 +134,10 @@ namespace WebsiteBanHangCongNghe.Controllers
 			await HttpContext.SignOutAsync();
 			return Redirect("/");
 		}
-	}
+		public IActionResult AccessDenied()
+		{
+			return View();
+		}
+
+    }
 }

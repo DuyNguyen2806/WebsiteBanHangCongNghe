@@ -1,0 +1,42 @@
+﻿    @using X.PagedList.Mvc.Core;
+    @model X.PagedList.IPagedList<WebsiteBanHangCongNghe.Data.Blog>
+@{
+    ViewData["Title"] = "Index";
+	Layout = "_MainLayout";
+}
+
+<div class="col-sm-12">
+	<div class="blog-post-area">
+		<h2 class="title text-center">News Blog</h2>
+		@foreach(var item in Model){
+			<div class="single-blog-post">
+				<h3 style="stroke">@item.Title</h3>
+				<div class="post-meta">
+					<span>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star-half-o"></i>
+					</span>
+				</div>
+				<a href="">
+					<img src="~/imgs/Images/Blog/@item.Img" alt="">
+				</a>
+				<p>@item.ShortDesc</p>
+				<a class="btn btn-primary" asp-action="Detail" asp-controller="Blog" asp-route-id="@item.Id">Read More</a>
+			</div>
+
+		}
+
+		<div class="pagination-area">
+			@Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }), new X.PagedList.Web.Common.PagedListRenderOptions()
+{
+	LiElementClasses = new List<String> { "page-item" },
+	PageClasses = new List<String> { "page-link" }
+})
+
+		</div>
+	</div>
+</div>
+

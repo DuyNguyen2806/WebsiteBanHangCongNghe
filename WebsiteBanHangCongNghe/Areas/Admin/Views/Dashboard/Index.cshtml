@@ -1,0 +1,194 @@
+﻿@model List<WebsiteBanHangCongNghe.Areas.Admin.ViewModel.OrdersByMonthViewModel>;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .small-box > .inner {
+        padding: 10px;
+    }
+
+    .small-box h3 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin: 0 0 10px;
+        padding: 0;
+        white-space: nowrap;
+    }
+
+    .h3, h3 {
+        font-size: 1.75rem;
+    }
+
+    .small-box > .small-box-footer {
+        background-color: rgba(0, 0, 0, .1);
+        color: rgba(255, 255, 255, .8);
+        display: block;
+        padding: 3px 0;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        z-index: 10;
+    }
+
+    .bg-info, .bg-info > a {
+        color: #fff !important;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+        background-color: transparent;
+    }
+
+    .small-box {
+        border-radius: 10px;
+    }
+
+        .small-box p {
+            font-size: 1rem;
+        }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+</style>
+    
+
+
+<h1>DashBoard</h1>
+<div class="row">
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3>@ViewBag.TotalOrders</h3>
+
+                <p>Orders</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-bag"></i>
+            </div>
+            <a asp-action="Index" asp-controller="Order" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3>@ViewBag.TotalQuantitySold<sup style="font-size: 20px"></sup></h3>
+
+                <p>Total sold product quantity</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+            </div>
+            <a asp-action="SoldProduct" asp-controller="Product" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>@ViewBag.TotalUsers</h3>
+
+                <p>User Registrations</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+            <a asp-action="Index" asp-controller="User" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-danger">
+            <div class="inner">
+                <h3>@ViewBag.TotalRevenue VNĐ</h3>
+
+                <p>Total revenue</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+</div>
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+<div>
+    <canvas id="revenueChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [@Html.Raw(string.Join(",", Model.Select(m => "'" + m.MonthYear + "'")))],
+            datasets: [{
+                label: 'Total Orders',
+                data: [@Html.Raw(string.Join(",", Model.Select(m => m.TotalOrders)))],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    var revenueLabels = [];
+    var revenueData = [];
+
+    @foreach (var item in ViewBag.RevenueByMonth)
+    {
+        <text>
+            revenueLabels.push('@item.MonthYear');
+        revenueData.push('@item.TotalRevenue');
+        </text>
+    }
+
+        const revenueCtx = document.getElementById('revenueChart');
+
+    new Chart(revenueCtx, {
+        type: 'bar',
+        data: {
+            labels: revenueLabels,
+            datasets: [{
+                label: 'Total Revenue',
+                data: revenueData,
+                backgroundColor: 'rgba(255, 99, 132, 0.7)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+   
+</script>

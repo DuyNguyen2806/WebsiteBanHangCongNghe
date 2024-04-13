@@ -6,7 +6,7 @@
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="logo pull-left">
-					<a href="index.html"><img src="~/images/home/logo.png" alt="" /></a>
+					<a asp-action="Index" asp-controller="Product"><img src="~/images/home/logo3.png" alt=""  width="130px" height="55px"/></a>
 				</div>
 			</div>
 			<div class="col-sm-8">
@@ -15,7 +15,7 @@
 						@if (User.Identity.IsAuthenticated)
 						{
 							<li><a href="#"><i class="fa fa-user"></i>Welcome @User.Identity.Name </a></li>
-							<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+							<li><a asp-action="Orders" asp-controller="Cart"><i class="fa fa-crosshairs"></i> Orders</a></li>
 							@await Component.InvokeAsync("Cart")
 							<li><a asp-action="Logout" asp-controller="Access" ><i class="fa fa-lock"></i> Logout</a></li>
 						}

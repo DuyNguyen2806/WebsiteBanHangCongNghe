@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using WebsiteBanHangCongNghe.Data;
@@ -8,6 +9,7 @@ using X.PagedList;
 namespace WebsiteBanHangCongNghe.Areas.Admin.Controllers
 {
     [Area("Admin")]
+
     public class CategoryController : Controller
     {
         private readonly QlbhcongNgheContext db;
@@ -32,6 +34,15 @@ namespace WebsiteBanHangCongNghe.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Create(Category category)
         {
+            // Check if a category with the same name already exists
+            var existingCategory = db.Categories.FirstOrDefault(c => c.Name == category.Name);
+
+            if (existingCategory != null)
+            {
+                // If a category with the same name already exists, add a model error
+                ModelState.AddModelError("Name", "Category name already exists");
+            }
+
             if (ModelState.IsValid)
             {
                 db.Categories.Add(category);
@@ -40,6 +51,7 @@ namespace WebsiteBanHangCongNghe.Areas.Admin.Controllers
             }
             return View(category);
         }
+
         [Route("EditCategory")]
 
         [HttpGet]

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebsiteBanHangCongNghe.Data;
@@ -10,12 +11,12 @@ namespace WebsiteBanHangCongNghe.Areas.Admin.Controllers
 {
     [Area("Admin")]
 
+
     public class ProductController : Controller
     {
         private readonly QlbhcongNgheContext db;
 
         public ProductController(QlbhcongNgheContext context) => db = context;
-
 
 
         public IActionResult Index(int? categoryId, int? brandId, string search, int? page)
@@ -211,9 +212,34 @@ namespace WebsiteBanHangCongNghe.Areas.Admin.Controllers
                 return View("Index", db.Products.ToList());
             }
         }
+        public IActionResult SoldProducts()
+        {
+
+            var ordersWithDetails = db.Orders
+                  .Include(o => o.OrderDetails)
+                      .ThenInclude(od => od.Product)
+                  .ToList();
+
+            // Tạo danh sách sản phẩm đã bán
+            List<Product> soldProducts = new List<Product>();
+            foreach (var order in ordersWithDetails)
+            {
+                foreach (var orderDetail in order.OrderDetails)
+                {
+                    soldProducts.Add(orderDetail.Product);
+                }
+            }
+
+            // Loại bỏ các sản phẩm trùng lặp
+            var distinctSoldProducts = soldProducts.Distinct().ToList();
+
+
+            return View(distinctSoldProducts);
+        }
+    }
 
     }
 
 
 
-}
+

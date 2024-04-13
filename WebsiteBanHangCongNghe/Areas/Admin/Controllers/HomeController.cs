@@ -1,16 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebsiteBanHangCongNghe.Data;
 
 namespace WebsiteBanHangCongNghe.Areas.Admin.Controllers
 {
-	public class HomeController : Controller
+	[Area("Admin")]
+
+
+    public class HomeController : Controller
 	{
 
 		private readonly QlbhcongNgheContext db;
 
 	
 		public HomeController(QlbhcongNgheContext context) => db = context;
-		[Area("Admin")]
+		
+
 		public IActionResult Index()
 		{
 			return View();
